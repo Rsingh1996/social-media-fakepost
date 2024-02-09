@@ -1,12 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Twitter from "./Twitter";
+import CreateTwitterPost from "./CreateTwitterPost";
 
 export const Home = () => {
   return (
-    <div className=" ">
+    <div>
       <Navbar />
-      <Twitter />
+      <div className="flex">
+        <Twitter />
+        <CreateTwitterPost />
+      </div>
     </div>
   );
 };

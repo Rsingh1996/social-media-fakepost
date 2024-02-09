@@ -3,7 +3,7 @@ import TwitterPost from "./TwitterPost";
 
 const Twitter = () => {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container flex items-center justify-center mx-auto p-4">
       <TwitterPost
         username="John Doe"
         handle="john_doe"

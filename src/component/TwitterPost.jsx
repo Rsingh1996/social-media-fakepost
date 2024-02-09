@@ -9,7 +9,7 @@ const TwitterPost = ({
   retweets,
 }) => {
   return (
-    <div className="bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+    <div className="w-[700px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
       <div className="flex items-center mb-4">
         <img
           src="https://via.placeholder.com/40"

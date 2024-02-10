@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex">
+      <div className="flex justify-normal items-center">
         <Twitter />
         <CreateTwitterPost />
       </div>

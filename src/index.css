@@ -13,4 +13,12 @@
     @apply px-4;
     @apply cursor-pointer;
   }
+  span {
+    width: 4px;
+    height: 18px;
+    float: left;
+    background-color: #fcd200;
+    margin-right: 5px;
+    border-radius: 10px;
+  }
 }

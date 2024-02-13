@@ -7,7 +7,7 @@ const Navbar = () => {
       <ul className=" flex justify-evenly ">
         <li>Instrgram</li>
         <li>X (Twitter)</li>
-        <li>FaceBook</li>
+        <li>Facebook</li>
         <li>LinkedIn</li>
       </ul>
     </div>

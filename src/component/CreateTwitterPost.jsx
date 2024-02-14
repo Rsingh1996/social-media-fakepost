@@ -17,6 +17,10 @@ const CreateTwitterPost = () => {
     retweetsCount: "",
   });
 
+  const [profileImagePreview, setProfileImagePreview] = useState(null);
+  const [tweetImagePreview, setTweetImagePreview] = useState(null);
+
+  // Handler to update the postData state when input fields change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPostData({
@@ -25,10 +29,33 @@ const CreateTwitterPost = () => {
     });
   };
 
+  // Handler to handle profile image upload
+  const handleProfileImageUpload = (e) => {
+    const file = e.target.files[0];
+    setPostData({ ...postData, profileImage: file });
+    const reader = new FileReader();
+    reader.onload = () => {
+      setProfileImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Handler to handle tweet image upload
+  const handleTweetImageUpload = (e) => {
+    const file = e.target.files[0];
+    setPostData({ ...postData, tweetImage: file });
+    const reader = new FileReader();
+    reader.onload = () => {
+      setTweetImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
-    <div className="flex justify-normal items-center">
+    <div className="flex justify-center items-center">
+      <TwitterPost postData={postData} />
       <div className="container flex items-center justify-center mx-auto p-4">
-        <div className="max-w-[600px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+        <div className="max-w-[500px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
           {/* {container} */}
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-7">
@@ -48,7 +75,7 @@ const CreateTwitterPost = () => {
                   value={postData.profileImage}
                   accept="image/*"
                   capture
-                  onChange={handleInputChange}
+                  onChange={handleProfileImageUpload}
                 />
               </button>
             </div>
@@ -69,7 +96,7 @@ const CreateTwitterPost = () => {
                   value={postData.tweetImage}
                   accept="image/*"
                   capture
-                  onChange={handleInputChange}
+                  onChange={handleTweetImageUpload}
                 />
               </button>
             </div>
@@ -187,7 +214,6 @@ const CreateTwitterPost = () => {
           </div>
         </div>
       </div>
-      <TwitterPost postData={postData} />
     </div>
   );
 };

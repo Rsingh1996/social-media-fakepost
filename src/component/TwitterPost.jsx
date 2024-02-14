@@ -2,7 +2,7 @@ import React from "react";
 
 const TwitterPost = ({ postData }) => {
   return (
-    <div className="max-w-[500px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+    <div className="max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md">
       <div className="flex items-center mb-4">
         <img
           src={postData.profileImage}

@@ -113,6 +113,7 @@ const CreateTwitterPost = () => {
                 className=" p-2 my-2"
                 type="text"
                 placeholder="John Doe"
+                maxLength={10}
                 onChange={handleInputChange}
               />
               <div className="flex items-center ">
@@ -126,6 +127,7 @@ const CreateTwitterPost = () => {
                 type="text"
                 placeholder="@john_doe"
                 onChange={handleInputChange}
+                maxLength={10}
               />
               <div className="flex items-center ">
                 <span></span>
@@ -137,6 +139,7 @@ const CreateTwitterPost = () => {
                 name="tweetText"
                 value={postData.tweetText}
                 onChange={handleInputChange}
+                maxLength={200}
               />
             </div>
             <div className="flex flex-col">

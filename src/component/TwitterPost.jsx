@@ -1,5 +1,5 @@
 import React from "react";
-import verifiedTick from "../assets/verify.png";
+import VERIFIEDTICK from "../assets/verify.png";
 
 const TwitterPost = ({ postData }) => {
   console.log(postData);
@@ -11,13 +11,13 @@ const TwitterPost = ({ postData }) => {
           alt="Profile"
           className="rounded-full w-10 h-10 mr-2"
         />
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <p className="font-bold">{postData.name}</p>
           {postData.officialTick && (
             <img
-              src="verifiedTick"
+              src={VERIFIEDTICK}
               alt="varified"
-              className="rounded-full w-10 h-10 mr-2"
+              className="rounded-full w-6 h-6"
             />
           )}
           <p className="text-gray-500">@{postData.username}</p>

@@ -9,7 +9,7 @@ const CreateTwitterPost = () => {
     username: "@john_doe",
     tweetText: `This is a fake Twitter post created with React and Tailwind CSS!`,
     tweetImage: "",
-    officialTick: "yes",
+    officialTick: "",
     theme: "light",
     time: "",
     commentsCount: "",
@@ -26,6 +26,15 @@ const CreateTwitterPost = () => {
     setPostData({
       ...postData,
       [name]: value,
+    });
+  };
+
+  // Handler to update the postData state when radio inputs change
+  const handleOfficialTickChange = (e) => {
+    const value = e.target.value === "true" ? true : false; // Toggle between true and false
+    setPostData({
+      ...postData,
+      officialTick: value,
     });
   };
 
@@ -147,14 +156,29 @@ const CreateTwitterPost = () => {
                 <span></span>
                 <label>Add Official Tick:</label>
               </div>
+
               <div className="flex gap-4 p-2 my-2">
                 <div className=" flex items-center gap-3">
-                  <label>Yes</label>
-                  <input type="radio" name="" />
+                  <label for="Yes">Yes</label>
+                  <input
+                    type="radio"
+                    id="Yes"
+                    name="VERIFIEDTICK"
+                    value={true}
+                    checked={postData.officialTick === true}
+                    onChange={handleOfficialTickChange}
+                  />
                 </div>
                 <div className="flex items-center gap-3">
-                  <label>No</label>
-                  <input type="radio" />
+                  <label for="No">No</label>
+                  <input
+                    type="radio"
+                    id="No"
+                    name="VERIFIEDTICK"
+                    value={false}
+                    checked={postData.officialTick === false}
+                    onChange={handleOfficialTickChange}
+                  />
                 </div>
               </div>
               <div className="flex items-center">

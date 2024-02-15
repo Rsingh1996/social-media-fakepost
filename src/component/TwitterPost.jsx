@@ -4,8 +4,12 @@ import VERIFIEDTICK from "../assets/verify.png";
 const TwitterPost = ({ postData }) => {
   console.log(postData);
   return (
-    <div className="max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md">
-      <div className="flex items-center  mb-4">
+    <div
+      className={`max-w-[600px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
+        postData.theme ? "text-black bg-white" : "text-white bg-black"
+      }`}
+    >
+      <div className="flex w-[500px] items-center mb-4">
         <img
           src={postData.profileImage}
           alt="Profile"
@@ -23,7 +27,13 @@ const TwitterPost = ({ postData }) => {
           <p className="text-gray-500">@{postData.username}</p>
         </div>
       </div>
-      <p className="text-gray-800">{postData.tweetText}</p>
+      <p
+        className={`text-gray-800 ${
+          postData.theme ? "text-black bg-white" : "text-white bg-black"
+        }`}
+      >
+        {postData.tweetText}
+      </p>
       <div className="flex justify-between mt-4 text-gray-500">
         <p>{postData.time}</p>
         <div className="flex">

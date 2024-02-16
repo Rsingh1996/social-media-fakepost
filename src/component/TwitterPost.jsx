@@ -6,10 +6,10 @@ const TwitterPost = ({ postData }) => {
   return (
     <div
       className={`max-w-[600px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-black"
+        postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
       }`}
     >
-      <div className="flex w-[500px] items-center mb-4">
+      <div className="flex items-center w-[500px] mb-4">
         <img
           src={postData.profileImage}
           alt="Profile"
@@ -28,9 +28,9 @@ const TwitterPost = ({ postData }) => {
         </div>
       </div>
       <p
-        className={`text-gray-800 ${
-          postData.theme ? "text-black bg-white" : "text-white bg-black"
-        }`}
+        className={
+          postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
+        }
       >
         {postData.tweetText}
       </p>

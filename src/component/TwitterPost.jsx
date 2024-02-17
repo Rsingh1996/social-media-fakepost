@@ -1,12 +1,17 @@
 import React from "react";
 import VERIFIEDTICK from "../assets/verify.png";
+import { FaRetweet } from "react-icons/fa6";
+import { FaRegComment } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
+import { FiBookmark } from "react-icons/fi";
+import { FiUpload } from "react-icons/fi";
 
 const TwitterPost = ({ postData }) => {
   console.log(postData);
   return (
     <div
       className={`max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "bg-black text-white"
+        postData.theme ? "text-black bg-white" : "text-white bg-slate-950"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -29,13 +34,13 @@ const TwitterPost = ({ postData }) => {
       </div>
 
       <p
-        className={
-          postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
-        }
+        className={` mb-2 mt-2 ${
+          postData.theme ? "text-black bg-white" : "text-white bg-slate-950"
+        }`}
       >
         {postData.tweetText}
       </p>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex mb-2 flex-col justify-center items-center">
         {postData.tweetImage && (
           <img
             src={postData.tweetImage}
@@ -44,24 +49,56 @@ const TwitterPost = ({ postData }) => {
           />
         )}
       </div>
-      <div className="flex justify-between mt-4 text-gray-500">
+      <hr
+        class={`h-1 ${
+          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+        }`}
+      />
+      <div className="flex justify-between mb-3 mt-3 text-gray-500  ">
         <p>{postData.time}</p>
-        <div className="flex">
-          <p className="mr-4">
-            <i className="far fa-comment"></i>
-          </p>
-          {postData.likesCount && (
-            <p className="mr-4">
-              <i className="far fa-heart"></i> {postData.likesCount}
+      </div>
+      <hr
+        class={`h-1  ${
+          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+        }`}
+      />
+
+      <div>
+        <div className="flex justify-evenly item-center mt-4 mb-2 ">
+          {postData.commentsCount && (
+            <p className="mr-4 flex items-center gap-1 ">
+              <FaRegComment /> {postData.commentsCount}
             </p>
           )}
+
           {postData.retweetsCount && (
-            <p>
-              <i className="fas fa-retweet"></i> {postData.retweetsCount}
+            <p className="mr-4 flex items-center gap-1 ">
+              <FaRetweet />
+              {postData.retweetsCount}
             </p>
           )}
+          {postData.likesCount && (
+            <p className="mr-4 flex items-center gap-1 ">
+              <FcLike />
+              {postData.likesCount}
+            </p>
+          )}
+
+          <div className="flex gap-4">
+            <p className="mr-4 flex items-center gap-1 ">
+              <FiBookmark />
+            </p>
+            <p className="mr-4 flex items-center gap-1 ">
+              <FiUpload />
+            </p>
+          </div>
         </div>
       </div>
+      <hr
+        class={`h-1  ${
+          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+        }`}
+      />
     </div>
   );
 };

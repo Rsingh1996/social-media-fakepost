@@ -12,9 +12,9 @@ const CreateTwitterPost = () => {
     officialTick: "",
     theme: "light",
     time: "",
-    commentsCount: "",
-    likesCount: "",
-    retweetsCount: "",
+    commentsCount: "2.3K",
+    likesCount: "10.9K",
+    retweetsCount: "2.6K",
   });
 
   const [profileImagePreview, setProfileImagePreview] = useState(null);

@@ -50,24 +50,16 @@ const CreateTwitterPost = () => {
 
   // Handler to handle profile image upload
   const handleProfileImageUpload = (e) => {
-    const file = e.target.files[0];
-    setPostData({ ...postData, profileImage: file });
-    const reader = new FileReader();
-    reader.onload = () => {
-      setProfileImagePreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+    e.preventDefault();
+    const [file] = e.target.files;
+    setPostData({ ...postData, profileImage: URL.createObjectURL(file) });
   };
 
   // Handler to handle tweet image upload
   const handleTweetImageUpload = (e) => {
-    const file = e.target.files[0];
-    setPostData({ ...postData, tweetImage: file });
-    const reader = new FileReader();
-    reader.onload = () => {
-      setTweetImagePreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+    e.preventDefault();
+    const [file] = e.target.files;
+    setPostData({ ...postData, tweetImage: URL.createObjectURL(file) });
   };
 
   return (
@@ -91,7 +83,6 @@ const CreateTwitterPost = () => {
                   className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2"
                   type="file"
                   name="profileImage"
-                  value={postData.profileImage}
                   accept="image/*"
                   capture
                   onChange={handleProfileImageUpload}
@@ -112,7 +103,6 @@ const CreateTwitterPost = () => {
                   className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2"
                   type="file"
                   name="tweetImage"
-                  value={postData.tweetImage}
                   accept="image/*"
                   capture
                   onChange={handleTweetImageUpload}

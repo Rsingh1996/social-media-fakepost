@@ -5,8 +5,8 @@ const TwitterPost = ({ postData }) => {
   console.log(postData);
   return (
     <div
-      className={`max-w-[600px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
+      className={`max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
+        postData.theme ? "text-black bg-white" : "bg-black text-white"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -27,6 +27,7 @@ const TwitterPost = ({ postData }) => {
           <p className="text-gray-500">@{postData.username}</p>
         </div>
       </div>
+
       <p
         className={
           postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
@@ -34,18 +35,31 @@ const TwitterPost = ({ postData }) => {
       >
         {postData.tweetText}
       </p>
+      <div className="flex flex-col justify-center items-center">
+        {postData.tweetImage && (
+          <img
+            src={postData.tweetImage}
+            alt="Tweet"
+            className=" w-max-[400px] h-auto mt-4"
+          />
+        )}
+      </div>
       <div className="flex justify-between mt-4 text-gray-500">
         <p>{postData.time}</p>
         <div className="flex">
           <p className="mr-4">
             <i className="far fa-comment"></i>
           </p>
-          <p className="mr-4">
-            <i className="far fa-heart"></i> {postData.likesCount}
-          </p>
-          <p>
-            <i className="fas fa-retweet"></i> {postData.retweetsCount}
-          </p>
+          {postData.likesCount && (
+            <p className="mr-4">
+              <i className="far fa-heart"></i> {postData.likesCount}
+            </p>
+          )}
+          {postData.retweetsCount && (
+            <p>
+              <i className="fas fa-retweet"></i> {postData.retweetsCount}
+            </p>
+          )}
         </div>
       </div>
     </div>

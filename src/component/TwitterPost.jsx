@@ -3,7 +3,7 @@ import VERIFIEDTICK from "../assets/verify.png";
 import { FaRetweet } from "react-icons/fa6";
 import { FaRegComment } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
-import { FiBookmark } from "react-icons/fi";
+import { FiBookmark, FiPhoneCall } from "react-icons/fi";
 import { FiUpload } from "react-icons/fi";
 
 const TwitterPost = ({ postData }) => {
@@ -21,10 +21,20 @@ const TwitterPost = ({ postData }) => {
     return postTime.toLocaleString("en-US", options);
   };
 
+  const formatNumber = (count) => {
+    if (count < 1000) {
+      return count.toString();
+    } else if (count < 1000000) {
+      return `${(count / 1000).toFixed(1)}K`;
+    } else {
+      return `${(count / 1000000).toFixed(1)}M`;
+    }
+  };
+
   return (
     <div
-      className={`max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-black"
+      className={`max-w-full sm:max-w-[600px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
+        postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -34,21 +44,25 @@ const TwitterPost = ({ postData }) => {
           className="rounded-full w-10 h-10 mr-2"
         />
         <div className="flex gap-2">
-          <p className="font-bold">{postData.name}</p>
-          {postData.officialTick && (
-            <img
-              src={VERIFIEDTICK}
-              alt="varified"
-              className="rounded-full w-6 h-6"
-            />
-          )}
-          <p className="text-gray-500">@{postData.username}</p>
+          <div className="flex flex-col items-center">
+            <p className="font-bold">{postData.name}</p>
+            <p className="text-gray-500 text-sm">@{postData.username}</p>
+          </div>
+          <div>
+            {postData.officialTick && (
+              <img
+                src={VERIFIEDTICK}
+                alt="varified"
+                className="rounded-full w-6 h-6"
+              />
+            )}
+          </div>
         </div>
       </div>
 
       <p
         className={` mb-2 mt-2 ${
-          postData.theme ? "text-black bg-white" : "text-white bg-black"
+          postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
         }`}
       >
         {postData.tweetText}
@@ -70,11 +84,15 @@ const TwitterPost = ({ postData }) => {
           postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
-      <div>
-        {postData.retweetsCount} Reposts
-        {postData.commentsCount} Quotes
-        {postData.likesCount} Likes
-        {postData.bookmarksCount}Bookmarks
+      <div className="flex gap-2">
+        {formatNumber(postData.retweetsCount)}
+        <label className="text-gray-500"> Reposts</label>
+        {formatNumber(postData.commentsCount)}
+        <label className="text-gray-500"> Quotes</label>
+        {formatNumber(postData.likesCount)}
+        <label className="text-gray-500"> Likes</label>
+        {formatNumber(postData.bookmarksCount)}
+        <label className="text-gray-500"> Bookmarks</label>
       </div>
       <hr
         class={`h-1  ${

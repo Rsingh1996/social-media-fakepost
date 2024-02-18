@@ -14,7 +14,7 @@ const CreateTwitterPost = () => {
     tweetImage: "",
     officialTick: "yes",
     theme: "light",
-    time: "",
+    time: "Feb 18, 2024, 5:06 PM",
     commentsCount: "2.3K",
     likesCount: "10.9K",
     retweetsCount: "2.6K",
@@ -26,9 +26,11 @@ const CreateTwitterPost = () => {
   // Handler to update the postData state when input fields change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    let validatedValue = value;
+
     setPostData({
       ...postData,
-      [name]: value,
+      [name]: validatedValue,
     });
   };
 
@@ -79,10 +81,10 @@ const CreateTwitterPost = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex flex-col sm:flex-row items-center justify-center">
       <TwitterPost postData={postData} />
       <div className="container flex items-center justify-center mx-auto p-4">
-        <div className="max-w-[500px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+        <div className="max-w-full sm:max-w-[600px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
           {/* {container} */}
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-7">
@@ -145,7 +147,7 @@ const CreateTwitterPost = () => {
               <input
                 name="name"
                 value={postData.name}
-                className=" p-2 my-2"
+                className=" p-2 my-2 border-b-2 border-[#fcd200]"
                 type="text"
                 placeholder="John Doe"
                 maxLength={12}
@@ -158,7 +160,7 @@ const CreateTwitterPost = () => {
               <input
                 name="username"
                 value={postData.username}
-                className="p-2 my-2"
+                className="p-2 my-2 border-b-2 border-[#fcd200]"
                 type="text"
                 placeholder="@john_doe"
                 onChange={handleInputChange}
@@ -169,7 +171,7 @@ const CreateTwitterPost = () => {
                 <label>Tweet Text:</label>
               </div>
               <textarea
-                className="p-2 my-2 h-[40px]"
+                className="p-2 my-2 h-[40px] border-b-2 border-[#fcd200]"
                 placeholder="Tweet message!"
                 name="tweetText"
                 value={postData.tweetText}
@@ -235,8 +237,9 @@ const CreateTwitterPost = () => {
                 <span></span>
                 <label>Time:</label>
               </div>
-              <div className="flex gap-4 p-2 my-2">
+              <div className="flex gap-4 p-2 my-2 ">
                 <input
+                  className="border-b-2 border-[#fcd200]"
                   type="datetime-local"
                   name="time"
                   value={postData.time}
@@ -248,17 +251,53 @@ const CreateTwitterPost = () => {
 
           <div className="flex flex-col justify-between mt-4 text-gray-500">
             <div className="flex">
-              <div className="mr-4">
-                {"comments"}
-                <input type="range" />
+              <div className="mr-2">
+                <span></span>
+                <label>Likes:</label>
+                <input
+                  type="range"
+                  name="likesCount"
+                  min="0"
+                  max="99999998"
+                  value={postData.likesCount}
+                  onChange={handleInputChange}
+                />{" "}
               </div>
-              <div className="mr-4">
-                {"likes"}
-                <input type="range" />
+              <div className="mr-2">
+                <span></span>
+                <label>Comments:</label>
+                <input
+                  type="range"
+                  name="commentsCount"
+                  min="0"
+                  max="99999998"
+                  value={postData.commentsCount}
+                  onChange={handleInputChange}
+                />{" "}
+              </div>
+              <div className="mr-2">
+                <span></span>
+                <label>Retweets:</label>
+                <input
+                  type="range"
+                  name="retweetsCount"
+                  min="0"
+                  max="99999998"
+                  value={postData.retweetsCount}
+                  onChange={handleInputChange}
+                />
               </div>
               <div>
-                {"retweets"}
-                <input type="range" />
+                <span></span>
+                <label>Bookmarks:</label>
+                <input
+                  type="range"
+                  name="bookmarksCount"
+                  min="0"
+                  max="99999998"
+                  value={postData.bookmarksCount}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
           </div>

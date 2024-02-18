@@ -1,24 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import TwitterPost from "./TwitterPost";
 
 const CreateTwitterPost = () => {
+  const profileFileInputRef = useRef(null);
+  const tweetFileInputRef = useRef(null);
+
   const [postData, setPostData] = useState({
-    profileImage: "",
+    profileImage: "https://via.placeholder.com/40",
     name: "John Doe",
     username: "john_doe",
     tweetText: `This is a fake Twitter post created with React and Tailwind CSS!`,
     tweetImage: "",
-    officialTick: "",
+    officialTick: "yes",
     theme: "light",
     time: "",
     commentsCount: "2.3K",
     likesCount: "10.9K",
     retweetsCount: "2.6K",
+    bookmarksCount: "3.9K",
   });
 
-  const [profileImagePreview, setProfileImagePreview] = useState(null);
-  const [tweetImagePreview, setTweetImagePreview] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
   // Handler to update the postData state when input fields change
@@ -62,6 +64,20 @@ const CreateTwitterPost = () => {
     setPostData({ ...postData, tweetImage: URL.createObjectURL(file) });
   };
 
+  // Handler to trigger file input click for profile image
+  const handleProfileCloudUploadClick = () => {
+    if (profileFileInputRef.current) {
+      profileFileInputRef.current.click();
+    }
+  };
+
+  // Handler to trigger file input click for tweet image
+  const handleTweetCloudUploadClick = () => {
+    if (tweetFileInputRef.current) {
+      tweetFileInputRef.current.click();
+    }
+  };
+
   return (
     <div className="flex justify-center items-center">
       <TwitterPost postData={postData} />
@@ -77,10 +93,15 @@ const CreateTwitterPost = () => {
                 alt="Profile"
                 className="rounded-full w-10 h-10 mr-1"
               />
-              <button type="button" className=" cursor-pointer">
+              <button
+                type="button"
+                className=" cursor-pointer"
+                onClick={handleProfileCloudUploadClick}
+              >
                 <FaCloudUploadAlt />
                 <input
-                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2"
+                  ref={profileFileInputRef}
+                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
                   type="file"
                   name="profileImage"
                   accept="image/*"
@@ -97,10 +118,15 @@ const CreateTwitterPost = () => {
                 alt="Profile"
                 className="rounded-full w-10 h-10 mr-1"
               />
-              <button type="button" className=" cursor-pointer">
+              <button
+                type="button"
+                className=" cursor-pointer"
+                onClick={handleTweetCloudUploadClick}
+              >
                 <FaCloudUploadAlt />
                 <input
-                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2"
+                  ref={tweetFileInputRef}
+                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
                   type="file"
                   name="tweetImage"
                   accept="image/*"
@@ -210,15 +236,12 @@ const CreateTwitterPost = () => {
                 <label>Time:</label>
               </div>
               <div className="flex gap-4 p-2 my-2">
-                <div className=" flex items-center gap-3 w-[25px]">
-                  <input type="number" />
-                </div>
-                <div className="flex items-center gap-3 w-[25px]">
-                  <input type="number" />
-                </div>
-                <div className="flex items-center gap-3 w-[25px]">
-                  <input type="number" />
-                </div>
+                <input
+                  type="datetime-local"
+                  name="time"
+                  value={postData.time}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
           </div>

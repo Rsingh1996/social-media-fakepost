@@ -7,11 +7,24 @@ import { FiBookmark } from "react-icons/fi";
 import { FiUpload } from "react-icons/fi";
 
 const TwitterPost = ({ postData }) => {
-  console.log(postData);
+  // Function to calculate time difference and return human-readable format
+  const formatTime = (timeString) => {
+    const postTime = new Date(timeString);
+    const options = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    };
+    return postTime.toLocaleString("en-US", options);
+  };
+
   return (
     <div
       className={`max-w-[500px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-slate-950"
+        postData.theme ? "text-black bg-white" : "text-white bg-black"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -35,7 +48,7 @@ const TwitterPost = ({ postData }) => {
 
       <p
         className={` mb-2 mt-2 ${
-          postData.theme ? "text-black bg-white" : "text-white bg-slate-950"
+          postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       >
         {postData.tweetText}
@@ -49,40 +62,39 @@ const TwitterPost = ({ postData }) => {
           />
         )}
       </div>
+      <div className="flex justify-between mb-3 mt-3 text-gray-500  ">
+        <p>{formatTime(postData.time)}</p>
+      </div>
       <hr
         class={`h-1 ${
-          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+          postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
-      <div className="flex justify-between mb-3 mt-3 text-gray-500  ">
-        <p>{postData.time}</p>
+      <div>
+        {postData.retweetsCount} Reposts
+        {postData.commentsCount} Quotes
+        {postData.likesCount} Likes
+        {postData.bookmarksCount}Bookmarks
       </div>
       <hr
         class={`h-1  ${
-          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+          postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
 
       <div>
         <div className="flex justify-evenly item-center mt-4 mb-2 ">
-          {postData.commentsCount && (
-            <p className="mr-4 flex items-center gap-1 ">
-              <FaRegComment /> {postData.commentsCount}
-            </p>
-          )}
+          <p className="mr-4 flex items-center gap-1 ">
+            <FaRegComment />
+          </p>
 
-          {postData.retweetsCount && (
-            <p className="mr-4 flex items-center gap-1 ">
-              <FaRetweet />
-              {postData.retweetsCount}
-            </p>
-          )}
-          {postData.likesCount && (
-            <p className="mr-4 flex items-center gap-1 ">
-              <FcLike />
-              {postData.likesCount}
-            </p>
-          )}
+          <p className="mr-4 flex items-center gap-1 ">
+            <FaRetweet />
+          </p>
+
+          <p className="mr-4 flex items-center gap-1 ">
+            <FcLike />
+          </p>
 
           <div className="flex gap-4">
             <p className="mr-4 flex items-center gap-1 ">
@@ -96,7 +108,7 @@ const TwitterPost = ({ postData }) => {
       </div>
       <hr
         class={`h-1  ${
-          postData.theme ? "border-black bg-white" : "border-white bg-slate-950"
+          postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
     </div>

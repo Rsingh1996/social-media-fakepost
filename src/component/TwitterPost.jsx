@@ -33,8 +33,8 @@ const TwitterPost = ({ postData }) => {
 
   return (
     <div
-      className={`max-w-full sm:max-w-[600px] bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
+      className={`max-w-full bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
+        postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -62,7 +62,7 @@ const TwitterPost = ({ postData }) => {
 
       <p
         className={` mb-2 mt-2 ${
-          postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
+          postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
         }`}
       >
         {postData.tweetText}
@@ -84,15 +84,23 @@ const TwitterPost = ({ postData }) => {
           postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
-      <div className="flex gap-2">
-        {formatNumber(postData.retweetsCount)}
-        <label className="text-gray-500"> Reposts</label>
-        {formatNumber(postData.commentsCount)}
-        <label className="text-gray-500"> Quotes</label>
-        {formatNumber(postData.likesCount)}
-        <label className="text-gray-500"> Likes</label>
-        {formatNumber(postData.bookmarksCount)}
-        <label className="text-gray-500"> Bookmarks</label>
+      <div className="flex justify-between items-center text-sm ">
+        <div className="flex gap-1">
+          {formatNumber(postData.retweetsCount)}
+          <label className="text-gray-500"> Reposts</label>
+        </div>
+        <div className="flex gap-1">
+          {formatNumber(postData.commentsCount)}
+          <label className="text-gray-500"> Quotes</label>
+        </div>
+        <div className="flex gap-1">
+          {formatNumber(postData.likesCount)}
+          <label className="text-gray-500"> Likes</label>
+        </div>
+        <div className="flex gap-1">
+          {formatNumber(postData.bookmarksCount)}
+          <label className="text-gray-500"> Bookmarks</label>
+        </div>
       </div>
       <hr
         class={`h-1  ${
@@ -101,24 +109,24 @@ const TwitterPost = ({ postData }) => {
       />
 
       <div>
-        <div className="flex justify-evenly item-center mt-4 mb-2 ">
-          <p className="mr-4 flex items-center gap-1 ">
+        <div className="flex justify-between item-center mt-4 mb-2 ">
+          <p className="mr-4 flex items-center">
             <FaRegComment />
           </p>
 
-          <p className="mr-4 flex items-center gap-1 ">
+          <p className="mr-4 flex items-center ">
             <FaRetweet />
           </p>
 
-          <p className="mr-4 flex items-center gap-1 ">
+          <p className="mr-4 flex items-center ">
             <FcLike />
           </p>
 
           <div className="flex gap-4">
-            <p className="mr-4 flex items-center gap-1 ">
+            <p className="mr-4 flex items-center">
               <FiBookmark />
             </p>
-            <p className="mr-4 flex items-center gap-1 ">
+            <p className="mr-4 flex items-center">
               <FiUpload />
             </p>
           </div>

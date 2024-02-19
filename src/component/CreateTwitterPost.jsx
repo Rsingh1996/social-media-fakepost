@@ -15,10 +15,10 @@ const CreateTwitterPost = () => {
     officialTick: "yes",
     theme: "light",
     time: "Feb 18, 2024, 5:06 PM",
-    commentsCount: "2.3K",
-    likesCount: "10.9K",
-    retweetsCount: "2.6K",
-    bookmarksCount: "3.9K",
+    commentsCount: "772233",
+    likesCount: "39838",
+    retweetsCount: "2766",
+    bookmarksCount: "2322",
   });
 
   const [darkMode, setDarkMode] = useState(false);
@@ -81,65 +81,38 @@ const CreateTwitterPost = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center">
+    <div className="flex w-full flex-col lg:flex-row items-center justify-center">
       <TwitterPost postData={postData} />
       <div className="container flex items-center justify-center mx-auto p-4">
-        <div className="max-w-full sm:max-w-[600px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+        <div className="w-full bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
           {/* {container} */}
-          <div className="flex items-center mb-4">
-            <div className="flex items-center mr-7">
-              <span></span>
-              <label className="mr-2">Profile Image</label>
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Profile"
-                className="rounded-full w-10 h-10 mr-1"
-              />
-              <button
-                type="button"
-                className=" cursor-pointer"
-                onClick={handleProfileCloudUploadClick}
-              >
-                <FaCloudUploadAlt />
-                <input
-                  ref={profileFileInputRef}
-                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
-                  type="file"
-                  name="profileImage"
-                  accept="image/*"
-                  capture
-                  onChange={handleProfileImageUpload}
+          <div className="flex justify-between">
+            <div className="flex flex-col gap-2 max-w-[150px] md:max-w-full">
+              <div className="flex items-center">
+                <span></span>
+                <label className="mr-2">Profile Image</label>
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Profile"
+                  className="rounded-full w-10 h-10 mr-1"
                 />
-              </button>
-            </div>
-            <div className="flex items-center">
-              <span></span>
-              <label className="mr-2">Tweet Image</label>
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Profile"
-                className="rounded-full w-10 h-10 mr-1"
-              />
-              <button
-                type="button"
-                className=" cursor-pointer"
-                onClick={handleTweetCloudUploadClick}
-              >
-                <FaCloudUploadAlt />
-                <input
-                  ref={tweetFileInputRef}
-                  className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
-                  type="file"
-                  name="tweetImage"
-                  accept="image/*"
-                  capture
-                  onChange={handleTweetImageUpload}
-                />
-              </button>
-            </div>
-          </div>
-          <div className="flex">
-            <div className="flex flex-col">
+                <button
+                  type="button"
+                  className=" cursor-pointer"
+                  onClick={handleProfileCloudUploadClick}
+                >
+                  <FaCloudUploadAlt />
+                  <input
+                    ref={profileFileInputRef}
+                    className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
+                    type="file"
+                    name="profileImage"
+                    accept="image/*"
+                    capture
+                    onChange={handleProfileImageUpload}
+                  />
+                </button>
+              </div>
               <div className="flex items-center ">
                 <span></span>
                 <label>Name:</label>
@@ -179,7 +152,32 @@ const CreateTwitterPost = () => {
                 maxLength={200}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2 max-w-[150px] md:max-w-full">
+              <div className="flex items-center">
+                <span></span>
+                <label className="mr-2">Tweet Image</label>
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Profile"
+                  className="rounded-full w-10 h-10 mr-1"
+                />
+                <button
+                  type="button"
+                  className=" cursor-pointer"
+                  onClick={handleTweetCloudUploadClick}
+                >
+                  <FaCloudUploadAlt />
+                  <input
+                    ref={tweetFileInputRef}
+                    className="  rounded-full w-10 h-10 mr-5 bg-[#ccd6f6] p-2 hidden"
+                    type="file"
+                    name="tweetImage"
+                    accept="image/*"
+                    capture
+                    onChange={handleTweetImageUpload}
+                  />
+                </button>
+              </div>
               <div className="flex items-center ">
                 <span></span>
                 <label>Add Official Tick:</label>
@@ -249,8 +247,8 @@ const CreateTwitterPost = () => {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between mt-4 text-gray-500">
-            <div className="flex">
+          <div className="flex justify-between mt-8 text-gray-500">
+            <div className="flex flex-col gap-2 md:flex-row">
               <div className="mr-2">
                 <span></span>
                 <label>Likes:</label>

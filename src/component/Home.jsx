@@ -6,7 +6,9 @@ export const Home = () => {
   return (
     <div>
       <Navbar />
-      <CreateTwitterPost />
+      <div className="pt-16">
+        <CreateTwitterPost />
+      </div>
     </div>
   );
 };

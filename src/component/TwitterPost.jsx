@@ -33,8 +33,8 @@ const TwitterPost = ({ postData }) => {
 
   return (
     <div
-      className={`max-w-full bg-white border ml-12 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
-        postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
+      className={`max-w-[500px] bg-white border ml-20 md:ml-15 mt-10 border-gray-300 rounded-lg p-4 mb-4 shadow-md ${
+        postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
       }`}
     >
       <div className="flex items-center w-[500px] mb-4">
@@ -62,7 +62,7 @@ const TwitterPost = ({ postData }) => {
 
       <p
         className={` mb-2 mt-2 ${
-          postData.theme ? "text-black bg-white" : "text-white bg-[#000]"
+          postData.theme ? "text-black bg-white" : "text-white bg-gray-950"
         }`}
       >
         {postData.tweetText}
@@ -84,7 +84,7 @@ const TwitterPost = ({ postData }) => {
           postData.theme ? "text-black bg-white" : "text-white bg-black"
         }`}
       />
-      <div className="flex justify-between items-center text-sm ">
+      <div className="flex justify-between items-center text-xs md:text-sm ">
         <div className="flex gap-1">
           {formatNumber(postData.retweetsCount)}
           <label className="text-gray-500"> Reposts</label>

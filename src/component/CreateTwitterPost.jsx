@@ -84,7 +84,7 @@ const CreateTwitterPost = () => {
     <div className="flex w-full flex-col lg:flex-row items-center justify-center">
       <TwitterPost postData={postData} />
       <div className="container flex items-center justify-center mx-auto p-4">
-        <div className="w-full bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
+        <div className="max-w-[600px] bg-white border border-gray-300 rounded-lg p-4 mb-4 shadow-md">
           {/* {container} */}
           <div className="flex justify-between">
             <div className="flex flex-col gap-2 max-w-[150px] md:max-w-full">
